@@ -95,6 +95,38 @@ Our proposed system addresses these issues with:
    ```sh
    python app.py
 
+🐳 Run Using Docker (Recommended)
+
+If you don’t want to install Python and dependencies locally, you can run the application using Docker.
+
+📦 Prerequisites
+
+Install Docker Desktop
+👉 https://www.docker.com/products/docker-desktop
+
+🚀 Build the Docker Image
+
+Open terminal in the project folder and run:
+
+docker build -t heart-predictor .
+▶️ Run the Container
+docker run -p 5000:5000 heart-predictor
+🌐 Open in Browser
+http://localhost:5000
+
+The Heart Disease Prediction web interface will be available locally.
+
+🧹 Stop the Container
+
+Press:
+
+CTRL + C
+
+Or run:
+
+docker ps
+docker stop <container_id>
+
 ## 📖 Heart Disease Prediction Notebook
 
 You can view the full Jupyter Notebook on **Nbviewer** here:  
