@@ -9,17 +9,10 @@ logging.basicConfig(level=logging.DEBUG)
 
 app = Flask(__name__)
 
-# Load your trained model using a path relative to this script
-script_dir = os.path.dirname(os.path.abspath(__file__))
-model_path = os.path.join(script_dir, 'gradient_boosting_model.joblib')
-try:
-    model = joblib.load(model_path)
-except FileNotFoundError:
-    logging.error(f"Model file not found at {model_path}")
-    raise
-except Exception as e:
-    logging.error(f"Failed to load model: {e}")
-    raise
+# Load your trained model (path relative to this file)
+base_dir = os.path.dirname(__file__)
+model_path = os.path.join(base_dir, 'gradient_boosting_model.joblib')
+model = joblib.load(model_path)
 
 @app.route('/', methods=['GET', 'POST'])
 def home():

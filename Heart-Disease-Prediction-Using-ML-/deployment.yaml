@@ -1,0 +1,19 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: heart-predictor-deployment
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: heart-predictor
+  template:
+    metadata:
+      labels:
+        app: heart-predictor
+    spec:
+      containers:
+      - name: heart-container
+        image: waleedcodearch/heart-predictor:v1
+        ports:
+        - containerPort: 5000
