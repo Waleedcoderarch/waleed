@@ -17,7 +17,7 @@ jobs:
         run: echo "${{ secrets.DOCKER_PASSWORD }}" | docker login -u "${{ secrets.DOCKER_USERNAME }}" --password-stdin
 
       - name: Build Docker image
-        working-directory: Heart-Disease-Prediction-main
+        working-directory: Heart-Disease-Prediction-Using-ML-
         run: docker build -t ${{ secrets.DOCKER_USERNAME }}/heart-disease:latest .
 
       - name: Push Docker image
