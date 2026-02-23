@@ -18,7 +18,8 @@ jobs:
 
       - name: Build Docker image
         working-directory: Heart-Disease-Prediction-Using-ML-
-        run: docker build -t ${{ secrets.DOCKER_USERNAME }}/heart-disease:latest .
+        run: |
+          docker build -t "${{ secrets.DOCKER_USERNAME }}/heart-disease:latest" .
 
       - name: Push Docker image
-        run: docker push ${{ secrets.DOCKER_USERNAME }}/heart-disease:latest
+        run: docker push "${{ secrets.DOCKER_USERNAME }}/heart-disease:latest"
