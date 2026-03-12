@@ -14,6 +14,6 @@ spec:
     spec:
       containers:
       - name: heart-container
-        image: waleedcodearch/heart-predictor:v1
+        image: waleedcodearch/heart-predictor:latest
         ports:
         - containerPort: 5000
