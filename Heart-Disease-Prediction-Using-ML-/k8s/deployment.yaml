@@ -14,7 +14,7 @@ spec:
     spec:
       containers:
       - name: heart-container
-        image: waleedcodearch/heart-disease:v2.0
+        image: waleedcodearch/heart-disease:latest
         imagePullPolicy: Always
         ports:
         - containerPort: 5000
