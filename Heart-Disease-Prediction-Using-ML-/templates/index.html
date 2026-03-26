@@ -324,6 +324,85 @@
       </div>
     </div>
   </section>
+  
+   <!-- ── Gradient Boosting Info Section ── -->
+  <section id="algorithm" style="background:var(--off);padding:6rem 0;">
+    <div class="container">
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:4rem;align-items:flex-start;">
+ 
+        <!-- Left: Image -->
+        <div class="reveal" style="position:relative;">
+          <img src="{{ url_for('static', filename='gradientboosting.png') }}"
+               alt="Gradient Boosting Working Principles"
+               style="width:100%;border-radius:10px;box-shadow:0 12px 40px rgba(10,35,66,0.12);border:1px solid var(--border);">
+          <div style="margin-top:0.75rem;text-align:center;font-family:var(--mono);font-size:0.6rem;letter-spacing:0.1em;text-transform:uppercase;color:var(--light);">Figure — Gradient Boosting Working Principles</div>
+        </div>
+ 
+        <!-- Right: Description -->
+        <div class="reveal reveal-delay-2">
+          <div class="section-eyebrow">Algorithm Deep Dive</div>
+          <h2 style="font-family:var(--serif);font-size:clamp(1.6rem,3vw,2.2rem);font-weight:600;color:var(--navy);line-height:1.15;margin-bottom:0.4rem;">Gradient Boosting in ML</h2>
+          
+ 
+          <p style="font-size:0.92rem;color:var(--muted);line-height:1.85;margin-bottom:1.25rem;">
+            Gradient Boosting is a <strong style="color:var(--navy);">boosting algorithm</strong> where each new model is trained to minimize the loss function — such as mean squared error or cross-entropy — of the previous model using <strong style="color:var(--navy);">gradient descent</strong>. In each iteration the algorithm computes the gradient of the loss function with respect to predictions and trains a new weak model to predict this gradient. Predictions of the new model are then added to the ensemble and the process repeats until a stopping criterion is met.
+          </p>
+ 
+          <!-- Shrinkage -->
+          <div style="background:var(--white);border:1px solid var(--border);border-left:3px solid var(--teal);border-radius:0 8px 8px 0;padding:1.25rem 1.5rem;margin-bottom:1.25rem;">
+            <p style="font-family:var(--mono);font-size:0.65rem;letter-spacing:0.12em;text-transform:uppercase;color:var(--teal);margin-bottom:0.6rem;">Shrinkage &amp; Model Complexity</p>
+            <p style="font-size:0.88rem;color:var(--muted);line-height:1.75;margin-bottom:0.75rem;">A key feature is <strong style="color:var(--navy);">shrinkage</strong> — which scales each new model's contribution using a learning rate (η).</p>
+            <div style="display:flex;flex-direction:column;gap:0.5rem;">
+              <div style="display:flex;gap:0.75rem;align-items:flex-start;">
+                <span style="width:6px;height:6px;border-radius:50%;background:var(--teal);flex-shrink:0;margin-top:6px;"></span>
+                <p style="font-size:0.85rem;color:var(--muted);line-height:1.7;"><strong style="color:var(--navy);">Smaller learning rates:</strong> Smaller contribution per tree, reduces overfitting but requires more trees.</p>
+              </div>
+              <div style="display:flex;gap:0.75rem;align-items:flex-start;">
+                <span style="width:6px;height:6px;border-radius:50%;background:var(--teal);flex-shrink:0;margin-top:6px;"></span>
+                <p style="font-size:0.85rem;color:var(--muted);line-height:1.7;"><strong style="color:var(--navy);">Larger learning rates:</strong> Each tree has more impact but can lead to overfitting.</p>
+              </div>
+            </div>
+          </div>
+ 
+          <!-- Working Steps -->
+          <p style="font-family:var(--mono);font-size:0.65rem;letter-spacing:0.12em;text-transform:uppercase;color:var(--navy);margin-bottom:0.75rem;">Working of Gradient Boosting</p>
+          <div style="display:flex;flex-direction:column;gap:0.75rem;">
+ 
+            <div style="display:flex;gap:1rem;align-items:flex-start;">
+              <div style="min-width:28px;height:28px;background:var(--navy);border-radius:50%;display:flex;align-items:center;justify-content:center;flex-shrink:0;">
+                <span style="font-family:var(--mono);font-size:0.65rem;color:white;font-weight:500;">1</span>
+              </div>
+              <div>
+                <p style="font-size:0.85rem;font-weight:500;color:var(--navy);margin-bottom:0.2rem;">Sequential Learning Process</p>
+                <p style="font-size:0.83rem;color:var(--muted);line-height:1.7;">Multiple trees are trained sequentially, each correcting the errors of the previous one. Tree 1 is trained on original data and true labels to make the first predictions.</p>
+              </div>
+            </div>
+ 
+            <div style="display:flex;gap:1rem;align-items:flex-start;">
+              <div style="min-width:28px;height:28px;background:var(--teal);border-radius:50%;display:flex;align-items:center;justify-content:center;flex-shrink:0;">
+                <span style="font-family:var(--mono);font-size:0.65rem;color:white;font-weight:500;">2</span>
+              </div>
+              <div>
+                <p style="font-size:0.85rem;font-weight:500;color:var(--navy);margin-bottom:0.2rem;">Residuals Calculation</p>
+                <p style="font-size:0.83rem;color:var(--muted);line-height:1.7;">Tree 2 is trained using errors from Tree 1 as labels — meaning it learns to predict exactly where Tree 1 went wrong. Each subsequent tree predicts the errors of the previous one.</p>
+              </div>
+            </div>
+ 
+            <div style="display:flex;gap:1rem;align-items:flex-start;">
+              <div style="min-width:28px;height:28px;background:var(--navy-light);border-radius:50%;display:flex;align-items:center;justify-content:center;flex-shrink:0;">
+                <span style="font-family:var(--mono);font-size:0.65rem;color:white;font-weight:500;">3</span>
+              </div>
+              <div>
+                <p style="font-size:0.85rem;font-weight:500;color:var(--navy);margin-bottom:0.2rem;">Shrinkage &amp; Final Prediction</p>
+                <p style="font-size:0.83rem;color:var(--muted);line-height:1.7;">After each tree is trained, its predictions are multiplied by the learning rate η (0 to 1) to prevent overfitting. Final predictions are made by summing contributions of all trees — forming a <strong style="color:var(--teal);">strong ensemble</strong>.</p>
+              </div>
+            </div>
+ 
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
 
   <footer>
     <div class="footer-inner">
